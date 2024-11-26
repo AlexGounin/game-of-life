@@ -29,7 +29,11 @@ function nextGeneration(before: string) : string {
         }
     }
     if (before[2] != undefined) {
-        line += "."
+        if (before[1] === 'X' && before[2] === 'X' && before[3] === 'X') {
+            line += "X"
+        } else {
+            line += "."
+        }
     }
     if (before[3] != undefined) {
         line += "."
