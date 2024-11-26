@@ -1,11 +1,5 @@
 import {expect} from "vitest";
 
-function nextGeneration(before: string) : string {
-    if (before == "XXX") {
-        return ".X."
-    }
-    return "..."
-}
 
 /*
 *
@@ -22,6 +16,15 @@ function nextGeneration(before: string) : string {
 // 1 cellule donne rien
 // XXX
 
+function nextGeneration(before: string) : string {
+    if (before === "XXX") {
+        return ".X."
+    }
+    if (before === ".") {
+        return "."
+    }
+    return "..."
+}
 describe('test', () => {
 
     it('Should have rien done rien',()=>{
@@ -35,6 +38,9 @@ describe('test', () => {
     })
     it('001',()=>{
         expect(nextGeneration(".")).toEqual(".")
+    })
+    it('002',()=>{
+        expect(nextGeneration("X")).toEqual(".")
     })
 
 })
