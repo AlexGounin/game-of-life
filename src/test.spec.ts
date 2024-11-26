@@ -20,7 +20,7 @@ function nextGeneration(before: string) : string {
     if (before === "XXX") {
         return ".X."
     }
-    if (before === ".") {
+    if (before === "." || before === "X") {
         return "."
     }
     return "..."
@@ -42,7 +42,9 @@ describe('test', () => {
     it('002',()=>{
         expect(nextGeneration("X")).toEqual(".")
     })
-
+    it('003',()=>{
+        expect(nextGeneration("..")).toEqual("..")
+    })
 })
 
 
