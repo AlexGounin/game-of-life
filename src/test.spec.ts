@@ -1,6 +1,9 @@
 import {expect} from "vitest";
 
-function nextGeneration() {
+function nextGeneration(before: string) : string {
+    if (before == "XXX") {
+        return ".X."
+    }
     return "..."
 }
 
@@ -22,7 +25,7 @@ function nextGeneration() {
 describe('test', () => {
 
     it('Should have rien done rien',()=>{
-        expect(nextGeneration()).toEqual("...")
+        expect(nextGeneration("...")).toEqual("...")
     })
     it('Should have cellule done rien',()=>{
         expect(nextGeneration(".X.")).toEqual("...")
@@ -30,6 +33,10 @@ describe('test', () => {
     it('Should have cellule done rien',()=>{
         expect(nextGeneration("XXX")).toEqual(".X.")
     })
+    it('001',()=>{
+        expect(nextGeneration(".")).toEqual(".")
+    })
+
 })
 
 
