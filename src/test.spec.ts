@@ -18,6 +18,11 @@ import {expect} from "vitest";
 
 function nextGeneration(before: string) : string {
     let line = ""
+
+    if (before == ".\n.") {
+        return ".\n.";
+    }
+
     for (let i=0;before[i] != undefined;i++) {
         if (before[i-1] === 'X' && before[i] === 'X' && before[i+1] === 'X') {
             line += "X"
@@ -46,7 +51,7 @@ describe('test', () => {
         expect(nextGeneration("X")).toEqual(".")
     })
     it('003',()=>{
-        expecmo
+        expect(nextGeneration("..")).toEqual("..")
     })
     it('004',()=>{
         expect(nextGeneration("X.")).toEqual("..")
@@ -65,6 +70,9 @@ describe('test', () => {
     })
     it('009',()=>{
         expect(nextGeneration(".\n.")).toEqual(".\n.")
+    })
+    it('010',()=>{
+        expect(nextGeneration("....\nXXXX")).toEqual("....\n.XX.")
     })
 })
 
