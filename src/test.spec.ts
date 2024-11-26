@@ -18,29 +18,33 @@ import {expect} from "vitest";
 
 function nextGeneration(before: string) : string {
     let line = ""
-    if (before === "XXX") {
-        return ".X."
-    }
     if (before[0] != undefined) {
         line += "."
     }
     if (before[1] != undefined) {
-        line += "."
+        if (before[0] === 'X' && before[1] === 'X' && before[2] === 'X') {
+            line += "X"
+        } else {
+            line += "."
+        }
     }
     if (before[2] != undefined) {
+        line += "."
+    }
+    if (before[3] != undefined) {
         line += "."
     }
     return line
 }
 describe('test', () => {
 
-    it('Should have rien done rien',()=>{
+    it('00',()=>{
         expect(nextGeneration("...")).toEqual("...")
     })
-    it('Should have cellule done rien',()=>{
+    it('01',()=>{
         expect(nextGeneration(".X.")).toEqual("...")
     })
-    it('Should have cellule done rien',()=>{
+    it('02',()=>{
         expect(nextGeneration("XXX")).toEqual(".X.")
     })
     it('001',()=>{
@@ -63,6 +67,9 @@ describe('test', () => {
     })
     it('007',()=>{
         expect(nextGeneration("....")).toEqual("....")
+    })
+    it('008',()=>{
+        expect(nextGeneration("XXXX")).toEqual(".XX.")
     })
 })
 
