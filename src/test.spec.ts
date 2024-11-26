@@ -1,9 +1,34 @@
 import {expect} from "vitest";
 
+function nextGeneration() {
+    return "..."
+}
+
+/*
+*
+* Step 1 : définir une cellule
+* Step 2 : modifier une seule cellule
+* Step 3 : modifier deux cellules
+* Step 4 : définir la taille de la grille de jeu
+* Step 5 : choisir que ce qu'il se passe sur les bords
+*
+*/
+
+
+// rien donne rien
+// 1 cellule donne rien
+// XXX
+
 describe('test', () => {
 
-    it('XXX',()=>{
-        expect("a").toEqual("a")
+    it('Should have rien done rien',()=>{
+        expect(nextGeneration()).toEqual("...")
+    })
+    it('Should have cellule done rien',()=>{
+        expect(nextGeneration(".X.")).toEqual("...")
+    })
+    it('Should have cellule done rien',()=>{
+        expect(nextGeneration("XXX")).toEqual(".X.")
     })
 })
 
