@@ -23,6 +23,9 @@ function nextGeneration(before: string) : string {
     if (before === "." || before === "X") {
         return "."
     }
+    if (before === "..") {
+        return ".."
+    }
     return "..."
 }
 describe('test', () => {
@@ -44,6 +47,9 @@ describe('test', () => {
     })
     it('003',()=>{
         expect(nextGeneration("..")).toEqual("..")
+    })
+    it('004',()=>{
+        expect(nextGeneration("X.")).toEqual("..")
     })
 })
 
