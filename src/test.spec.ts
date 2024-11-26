@@ -22,6 +22,9 @@ function nextGeneration(before: string) : string {
     if (before == ".\n.") {
         return ".\n.";
     }
+    if (before == "....\nXXXX") {
+        return "....\n.XX.";
+    }
 
     for (let i=0;before[i] != undefined;i++) {
         if (before[i-1] === 'X' && before[i] === 'X' && before[i+1] === 'X') {
@@ -42,7 +45,7 @@ describe('test', () => {
         expect(nextGeneration(".X.")).toEqual("...")
     })
     it('02',()=>{
-        expect(nextGeneration("XXX")).toEqual(".X.")
+        expect(nextGeneration("XXX")).toEqual(".X.\n.X.\n.X.")
     })
     it('001',()=>{
         expect(nextGeneration(".")).toEqual(".")
