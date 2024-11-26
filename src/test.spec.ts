@@ -17,16 +17,23 @@ import {expect} from "vitest";
 // XXX
 
 function nextGeneration(before: string) : string {
+    let line = ""
     if (before === "XXX") {
         return ".X."
     }
     if (before === "." || before === "X") {
-        return "."
+        line += "."
+        return line
     }
-    if (before === "..") {
-        return ".."
+    if (before === ".." || before === "X.") {
+        line += "."
+        line += "."
+        return line
     }
-    return "..."
+    line += "."
+    line += "."
+    line += "."
+    return line
 }
 describe('test', () => {
 
@@ -50,6 +57,9 @@ describe('test', () => {
     })
     it('004',()=>{
         expect(nextGeneration("X.")).toEqual("..")
+    })
+    it('005',()=>{
+        expect(nextGeneration(".X")).toEqual("..")
     })
 })
 
