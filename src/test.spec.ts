@@ -21,18 +21,15 @@ function nextGeneration(before: string) : string {
     if (before === "XXX") {
         return ".X."
     }
-    if (before === "." || before === "X") {
+    if (before[0] != undefined) {
         line += "."
-        return line
     }
-    if (before === ".." || before === "X." || before === ".X") {
+    if (before[1] != undefined) {
         line += "."
-        line += "."
-        return line
     }
-    line += "."
-    line += "."
-    line += "."
+    if (before[2] != undefined) {
+        line += "."
+    }
     return line
 }
 describe('test', () => {
@@ -63,6 +60,9 @@ describe('test', () => {
     })
     it('006',()=>{
         expect(nextGeneration("XX")).toEqual("..")
+    })
+    it('007',()=>{
+        expect(nextGeneration("....")).toEqual("....")
     })
 })
 
